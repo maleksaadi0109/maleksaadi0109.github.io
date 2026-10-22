@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" data-theme="pearl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0e9">
+  <meta name="description" content="Throw is a native Rust launcher for Windows. Open apps, find files, calculate, search the web and trigger quick actions from one shortcut.">
+  <meta property="og:title" content="Throw — one shortcut, less friction">
+  <meta property="og:description" content="A native Rust launcher for Windows. Apps, files and quick actions, one shortcut away.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/throw-launcher.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/throw-launcher.svg" as="image" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Throw Launcher — one shortcut, less friction</title>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Throw Launcher home">
+        <img src="assets/throw-launcher.svg" alt="" width="34" height="34">
+        <span class="brand-word">throw</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#built-with-rust">Built with Rust</a>
+        <a href="#install">Install</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to Graphite theme" title="Switch site theme">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.4"/><path d="M10 1.8v2M10 16.2v2M18.2 10h-2M3.8 10h-2m14.02-5.82-1.42 1.42M5.6 14.4l-1.42 1.42m11.64 0L14.4 14.4M5.6 5.6 4.18 4.18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <span id="theme-label">Pearl</span>
+        </button>
+        <a class="button button-primary" href="https://github.com/maleksaadi0109/throw-launcher/releases/latest/download/Throw-Launcher-Setup-x64.exe" rel="noopener">Download <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-links" aria-expanded="false">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid shell">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">A native Windows launcher</span>
+          <h1>Think it.<br>Type it.<br><span>Throw.</span></h1>
+          <p class="hero-lede">Your apps, files and quick actions: one shortcut away. No sprawling dashboard. Just a fast little launcher, built in Rust and made for the keyboard.</p>
+          <div class="hero-cta">
+            <a class="button button-primary" href="https://github.com/maleksaadi0109/throw-launcher/releases/latest/download/Throw-Launcher-Setup-x64.exe" rel="noopener">
+              Get Throw for Windows <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-outline" href="#demo">Try the website demo <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="trust-line" aria-label="Product details">
+            <span>Windows x64</span><span>Rust native controls</span><span>MIT open source</span>
+          </div>
+        </div>
+
+        <div class="demo-wrap reveal reveal-delay" id="demo">
+          <div class="launcher" aria-label="Interactive Throw launcher website demo">
+            <div class="launcher-top">
+              <span>THROW / WEBSITE DEMO</span>
+              <span class="launcher-status">LOCAL EXAMPLES</span>
+            </div>
+            <div class="demo-content">
+              <div class="mode-row" role="group" aria-label="Choose demo mode">
+                <button class="mode-tab" type="button" data-mode="apps" aria-pressed="true">Apps</button>
+                <button class="mode-tab" type="button" data-mode="files" aria-pressed="false">Files</button>
+                <button class="mode-tab" type="button" data-mode="calc" aria-pressed="false">Calculator</button>
+                <button class="mode-tab" type="button" data-mode="web" aria-pressed="false">Web</button>
+                <button class="mode-tab" type="button" data-mode="system" aria-pressed="false">System</button>
+              </div>
+              <label class="query-row" for="demo-query">
+                <span class="query-mark" id="query-mark" aria-hidden="true">›</span>
+                <input id="demo-query" type="text" maxlength="96" autocomplete="off" spellcheck="false" placeholder="Find an app…" aria-describedby="demo-help demo-status">
+                <span class="keycap" aria-hidden="true">↑ ↓</span>
+                <span class="keycap" aria-hidden="true">ENTER</span>
+              </label>
+              <span id="demo-help" hidden>Type to filter safe examples. Use arrow keys to select and Enter to preview.</span>
+              <div class="result-head"><span id="mode-caption">SUGGESTED APPS</span><span id="result-count">3 EXAMPLES</span></div>
+              <div class="demo-results" id="demo-results" role="listbox" aria-label="Demo results"></div>
+              <p class="demo-status" id="demo-status" role="status" aria-live="polite">Website demo only — nothing is launched or searched.</p>
+            </div>
+            <div class="launcher-foot">
+              <span id="demo-hint">↑ ↓ move &nbsp; ↵ preview</span><span>ESC clears selection</span>
+            </div>
+          </div>
+          <p class="demo-caption">A small, interactive illustration. It only filters sample entries in this page; it cannot search or run anything on your PC.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="signal-strip">
+      <div class="signal-inner shell">
+        <div class="signal-copy">
+          <span class="signal-glyph" aria-hidden="true">⌘</span>
+          <div><strong>There when you need it. Gone when you don’t.</strong><span>A compact launcher, not another place to live.</span></div>
+        </div>
+        <div class="signal-shortcut" aria-label="Default shortcut Control Alt Space">
+          <kbd>CTRL</kbd><span>+</span><kbd>ALT</kbd><span>+</span><kbd>SPACE</kbd>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="how">
+      <div class="shell">
+        <div class="section-heading">
+          <div><span class="eyebrow">A shorter path to the thing</span><h2>Less hunting.<br>More doing.</h2></div>
+          <p>Call Throw with a shortcut, type what you mean, and choose a result. Each mode has a simple prefix; the interface stays out of your way until you need it.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-index">01 / FIND</span><span class="feature-mark" aria-hidden="true">›</span>
+            <h3>Apps and folders</h3><p>Search installed apps and useful folders from one keyboard-first surface.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-index">02 / LOCATE</span><span class="feature-mark" aria-hidden="true">:</span>
+            <h3>Find a file</h3><p>Prefix a query with <code>file:</code> to search through the Windows Search catalog.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-index">03 / CALCULATE</span><span class="feature-mark" aria-hidden="true">=</span>
+            <h3>Quick maths</h3><p>Type <code>= (12+3)*2</code> for a result without opening a separate calculator.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-index">04 / SEARCH</span><span class="feature-mark" aria-hidden="true">?</span>
+            <h3>Ask the web</h3><p>Start with <code>?</code> to turn a thought into a web search.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-index">05 / ACT</span><span class="feature-mark" aria-hidden="true">&gt;</span>
+            <h3>Quick system actions</h3><p>Use <code>&gt;</code> for system commands. Disruptive actions ask for confirmation.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-index">06 / TUNE</span><span class="feature-mark" aria-hidden="true">⌘K</span>
+            <h3>Make it yours</h3><p>Open inline actions with Ctrl+K, pick a custom theme, and choose a shortcut that fits.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="rust-section" id="built-with-rust">
+      <div class="rust-panel shell">
+        <div class="rust-copy">
+          <span class="eyebrow">Native by design</span>
+          <h2>Rust at the core.<br>Windows at home.</h2>
+          <p>Throw is built in Rust with native Windows controls. No Electron shell, no WebView layer, no .NET runtime to install, and no background telemetry process.</p>
+          <div class="rust-facts" aria-label="Technical details">
+            <div class="rust-fact"><span>Implementation</span><span>RUST / NATIVE WINDOWS</span></div>
+            <div class="rust-fact"><span>Default mode</span><span>LITE ENABLED</span></div>
+            <div class="rust-fact"><span>Background telemetry</span><span>NONE</span></div>
+            <div class="rust-fact"><span>License</span><span>MIT / OPEN SOURCE</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="code-panel" aria-label="Rust code-inspired decoration">
+            <div class="code-top"><span>THROW / FOUNDATION</span><span>RUST</span></div>
+            <div class="code-row"><span class="code-no">01</span><span><span class="code-comment">// small surface, native feel</span></span></div>
+            <div class="code-row"><span class="code-no">02</span><span><span class="code-fn">let</span> launcher = <span class="code-type">Throw</span>::new();</span></div>
+            <div class="code-row"><span class="code-no">03</span><span>launcher.<span class="code-emphasis">listen</span>(shortcut);</span></div>
+            <div class="code-row"><span class="code-no">04</span><span><span class="code-comment">// ready when called</span></span></div>
+          </div>
+          <div class="rust-stamp"><span>Quiet by default</span><strong>RUST / WINDOWS / X64</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="install-section" id="install">
+      <div class="install-grid shell">
+        <div class="install-copy">
+          <span class="eyebrow">A simple start</span>
+          <h2>Up and running in a minute.</h2>
+          <p>Download the latest Windows x64 installer and follow the prompts. Throw installs for your user account—no administrator rights or extra runtime required.</p>
+          <a class="button button-primary" href="https://github.com/maleksaadi0109/throw-launcher/releases/latest/download/Throw-Launcher-Setup-x64.exe" rel="noopener">Download installer <span aria-hidden="true">↗</span></a>
+          <div class="install-label">Windows x64 · per-user install · 2.4 MB</div>
+        </div>
+        <div>
+          <div class="steps">
+            <article class="step"><span class="step-number">01</span><div><h3>Download the installer</h3><p>Get the current x64 setup directly from the project’s GitHub release.</p></div></article>
+            <article class="step"><span class="step-number">02</span><div><h3>Install for your account</h3><p>Run setup and follow its prompts. It doesn’t need admin rights or a separate runtime.</p></div></article>
+            <article class="step"><span class="step-number">03</span><div><h3>Call it up</h3><p>Press <code>Ctrl+Alt+Space</code>. You can also choose <code>Alt+Space</code> or <code>Ctrl+Shift+Space</code>.</p></div></article>
+            <article class="step"><span class="step-number">04</span><div><h3>Keep it light—or explore</h3><p>Lite mode is on by default. Browser bookmark discovery and local launch history are optional.</p></div></article>
+          </div>
+          <aside class="warning" aria-label="Unsigned preview software warning">
+            <strong>Preview software, unsigned installer.</strong>
+            <p>Windows may show a publisher or reputation warning because this installer is unsigned. Only run builds you trust. Don’t disable Windows security protections to install it. Review the <a href="https://github.com/maleksaadi0109/throw-launcher/releases/latest" target="_blank" rel="noopener noreferrer">release notes</a> and <a href="https://github.com/maleksaadi0109/throw-launcher" target="_blank" rel="noopener noreferrer">source code</a> first if you’re unsure.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+      <div class="faq-layout shell">
+        <div class="faq-intro">
+          <span class="eyebrow">Good to know</span>
+          <h2>Before you throw.</h2>
+          <p>Short answers to the practical questions.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>What does Throw run on?</summary>
+            <p>Throw is for Windows x64. The per-user installer doesn’t require admin rights or an additional runtime. This is preview software, and the installer is currently unsigned.</p>
+          </details>
+          <details>
+            <summary>Why does Windows warn me about the installer?</summary>
+            <p>The installer is unsigned, so Windows may show a publisher or reputation warning. That warning is expected for an unsigned build, not a reason to bypass protections. Only install software you trust; inspect the source and release details before running it.</p>
+          </details>
+          <details>
+            <summary>Does it send telemetry or run a web runtime?</summary>
+            <p>Throw uses native Windows controls and is built with Rust. It does not include Electron, a WebView, a .NET runtime requirement, or a background telemetry process. Browser bookmark discovery and local launch history are opt-in features.</p>
+          </details>
+          <details>
+            <summary>Can I change the shortcut or appearance?</summary>
+            <p>Yes. The default shortcut is Ctrl+Alt+Space; alternatives include Alt+Space and Ctrl+Shift+Space. You can choose a custom shortcut and a theme in Throw’s settings.</p>
+          </details>
+          <details>
+            <summary>Is Throw related to Flow Launcher?</summary>
+            <p>Throw originated as a Flow Launcher fork and retains that project’s credit. It is an independent project, not affiliated with Microsoft or Flow Launcher. It is MIT licensed and open source on <a href="https://github.com/maleksaadi0109/throw-launcher" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+          </details>
+          <details>
+            <summary>Can I download a portable build?</summary>
+            <p>There is no verified portable download link here. Check the project’s <a href="https://github.com/maleksaadi0109/throw-launcher" target="_blank" rel="noopener noreferrer">source repository</a> and <a href="https://github.com/maleksaadi0109/throw-launcher/releases/latest" target="_blank" rel="noopener noreferrer">release page</a> for current build options.</p>
+          </details>
+          <details>
+            <summary>What does the demo on this page do?</summary>
+            <p>It filters a small set of examples in your browser and previews selections as text. It does not access your files, run apps, execute commands, or open search URLs. The actual Windows app has those capabilities with the permissions and confirmations described in its documentation.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-heading">
+      <div class="final-inner shell">
+        <div><span class="eyebrow">The next thing is one shortcut away</span><h2 id="final-heading">Make room for the work.</h2></div>
+        <a class="button button-dark" href="https://github.com/maleksaadi0109/throw-launcher/releases/latest/download/Throw-Launcher-Setup-x64.exe" rel="noopener">Download Throw <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-top">
+        <a class="brand" href="#top" aria-label="Throw Launcher home">
+          <img src="assets/throw-launcher.svg" alt="" width="34" height="34"><span class="brand-word">throw</span>
+        </a>
+        <div class="footer-links">
+          <a href="https://github.com/maleksaadi0109/throw-launcher" target="_blank" rel="noopener noreferrer">Source</a>
+          <a href="https://github.com/maleksaadi0109/throw-launcher/releases/latest" target="_blank" rel="noopener noreferrer">Releases</a>
+          <a href="https://github.com/maleksaadi0109/throw-launcher/blob/main/desktop/throw-rust/README.md" target="_blank" rel="noopener noreferrer">Rust guide</a>
+          <a href="#install">Install notes</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Throw Launcher · MIT License · Windows x64</span>
+        <span class="footer-credit">Throw originated as a Flow Launcher fork. Credit to the Flow Launcher project and contributors. Throw is not affiliated with Microsoft or Flow Launcher.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
