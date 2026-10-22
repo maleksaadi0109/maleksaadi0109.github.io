@@ -10,6 +10,9 @@
   --line: #d9d9d3;
   --blue: #022cc1;
   --blue-soft: #e5ebff;
+  --rust-accent: #a53a1d;
+  --rust-wash: #eee5da;
+  --art-paper: #f6f0e5;
   --green: #a5ce56;
   --green-ink: #24330d;
   --shadow: 0 20px 60px rgb(20 29 48 / 10%);
@@ -28,6 +31,9 @@
   --line: #343b48;
   --blue: #7896ff;
   --blue-soft: #293451;
+  --rust-accent: #f3ac8d;
+  --rust-wash: #302824;
+  --art-paper: #f6f0e5;
   --green: #b7df6b;
   --green-ink: #23320c;
   --shadow: 0 20px 60px rgb(0 0 0 / 28%);
@@ -141,6 +147,23 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   content: ""; position: absolute; inset: 0 18px 0 0; background: var(--blue); border-radius: 7px;
   transform: rotate(2.5deg); opacity: .12;
 }
+.native-note {
+  position: relative; display: flex; align-items: center; gap: 14px;
+  margin: 0 0 18px 12px; padding: 12px 16px;
+  border: 1px solid var(--line); border-left: 3px solid var(--blue);
+  background: var(--surface); text-decoration: none;
+  transition: transform .2s ease;
+}
+.native-note:hover { transform: translateY(-3px); }
+.native-note-logo {
+  display: grid; place-items: center; flex: 0 0 54px; width: 54px; height: 54px;
+  background: var(--art-paper); border-radius: 50%;
+}
+.native-note-logo img { display: block; width: 40px; height: 40px; }
+.native-note-copy { display: grid; gap: 4px; }
+.native-note-copy strong { font: 600 15px var(--display); letter-spacing: -.03em; }
+.native-note-copy > span { color: var(--muted); font: 9px/1.5 var(--mono); }
+.native-note-arrow { margin-left: auto; color: var(--blue); font-size: 20px; }
 .launcher {
   position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--line), transparent 10%);
   border-radius: 8px; background: var(--surface-raised); box-shadow: var(--shadow);
@@ -239,8 +262,41 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .rust-section { padding: 0 0 112px; }
 .rust-panel {
   display: grid; grid-template-columns: 1fr .82fr; gap: 54px; align-items: center;
+  position: relative; overflow: hidden;
   padding: clamp(28px, 6vw, 68px); background: var(--surface); border: 1px solid var(--line);
+  border-top: 3px solid var(--blue);
 }
+.rust-visual { min-width: 0; }
+.rust-artwork {
+  position: relative; isolation: isolate; min-height: 266px; margin: 0 0 20px;
+  padding: 19px 22px 14px; border: 1px solid var(--line);
+  background: var(--rust-wash); overflow: hidden;
+}
+.rust-artwork::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 26px 26px; opacity: .4;
+}
+.rust-art-label {
+  display: flex; justify-content: space-between; gap: 12px;
+  color: var(--rust-accent); font: 9px/1.5 var(--mono); letter-spacing: .08em;
+}
+.rust-art-stage { position: relative; display: flex; align-items: center; min-height: 194px; }
+.rust-logo-medallion {
+  display: grid; place-items: center; width: 148px; height: 148px; flex: 0 0 148px;
+  background: var(--art-paper); border: 1px solid #d8cebf; border-radius: 50%;
+  box-shadow: 5px 7px 0 color-mix(in srgb, var(--rust-accent), transparent 86%);
+}
+.rust-logo-medallion img { display: block; width: 112px; height: 112px; }
+.ferris-art {
+  display: block; position: relative; width: min(60%, 230px); height: auto;
+  margin-left: -5px; transform: translateY(30px);
+}
+.rust-artwork figcaption {
+  position: relative; padding-top: 9px; border-top: 1px solid var(--line);
+  color: var(--ink); font: 10px/1.5 var(--mono);
+}
+.rust-artwork figcaption span { color: var(--rust-accent); }
 .rust-copy .eyebrow { color: var(--blue); }
 .rust-copy p { max-width: 540px; margin: 20px 0; color: var(--muted); }
 .rust-facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
@@ -256,7 +312,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .code-no { color: #66738f; user-select: none; }
 .code-fn { color: #b7d8ff; }
 .code-type { color: #badc77; }
-.code-comment { color: #74829e; }
+.code-comment { color: #a0aec8; }
 .code-emphasis { color: #b7df6b; }
 .rust-stamp {
   display: flex; align-items: center; justify-content: space-between; margin-top: 15px;
@@ -314,6 +370,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; color: var(--muted); font: 9px/1.6 var(--mono); }
 .footer-bottom a { color: inherit; text-underline-offset: 3px; }
 .footer-credit { max-width: 700px; }
+.asset-credit {
+  margin: 17px 0 0; padding-top: 14px; border-top: 1px solid var(--line);
+  color: var(--muted); font: 9px/1.8 var(--mono);
+}
+.asset-credit a { color: var(--ink); text-underline-offset: 3px; }
 .reveal { animation: rise-in .72s cubic-bezier(.2,.7,.2,1) both; }
 .reveal-delay { animation-delay: .11s; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
@@ -328,6 +389,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .section-heading p { max-width: 600px; }
   .feature, .feature:nth-child(n) { grid-column: span 6; }
   .rust-panel { grid-template-columns: 1fr; gap: 34px; }
+  .rust-art-stage { justify-content: center; }
   .install-grid { gap: 44px; }
   .faq-layout { gap: 42px; }
 }
@@ -353,6 +415,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .hero-cta .button { flex: 1 1 185px; }
   .trust-line { gap: 9px 12px; font-size: 9px; }
   .demo-wrap { padding: 17px 0; }
+  .native-note { margin-left: 0; gap: 12px; padding: 11px 13px; }
+  .native-note-copy strong { font-size: 14px; }
+  .native-note-copy > span { font-size: 8px; }
   .demo-content { padding: 14px 13px 11px; }
   .mode-row { margin-inline: -2px; }
   .query-row { min-height: 54px; padding-inline: 11px; }
@@ -374,6 +439,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .feature h3 { margin-top: 26px; }
   .rust-section { padding-bottom: 76px; }
   .rust-panel { padding: 25px 20px; gap: 28px; }
+  .rust-artwork { padding-inline: 15px; }
+  .rust-logo-medallion { width: clamp(88px, 26vw, 120px); height: clamp(88px, 26vw, 120px); flex-basis: clamp(88px, 26vw, 120px); }
+  .rust-logo-medallion img { width: 76%; height: 76%; }
+  .rust-art-label { font-size: 8px; letter-spacing: .03em; }
+  .ferris-art { width: 58%; margin-left: -8px; }
   .code-panel { padding: 17px 13px; font-size: 9px; }
   .code-row { gap: 10px; }
   .install-section { padding-bottom: 76px; }
